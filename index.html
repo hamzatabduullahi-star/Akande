@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Confirmation — HTX Hairstylist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0d0b10;
+    --card: #1a1620;
+    --rose: #e8b4b8;
+    --gold: #d4a24c;
+    --gold2: #f0c674;
+    --text: #eae6ea;
+    --muted: #9a8f9a;
+    --border: rgba(232, 180, 184, 0.12);
+    --cash-green: #00D632;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(232, 180, 184, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 214, 50, 0.03) 0%, transparent 40%);
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.payment-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Brand Logo */
+.brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--rose);
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.brand span {
+    color: #fff;
+    font-weight: 400;
+}
+
+.payment-card h1 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.payment-card p.subtitle {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+/* Cash App Tag Display */
+.cashtag-box {
+    background: #0d0b10;
+    border: 2px dashed var(--cash-green);
+    border-radius: 14px;
+    padding: 25px 20px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.cashtag-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.cashtag-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--cash-green);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    word-break: break-all;
+}
+
+.copy-btn {
+    background: var(--cash-green);
+    color: #000;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.copy-btn:hover {
+    background: #00b82b;
+    transform: scale(1.03);
+}
+
+.copy-btn.copied {
+    background: #fff;
+    color: #000;
+}
+
+/* Instructions */
+.instructions {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.instructions h3 {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.step:last-child {
+    margin-bottom: 0;
+}
+
+.step-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(232, 180, 184, 0.15);
+    color: var(--rose);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.step-text {
+    font-size: 0.85rem;
+    color: var(--text);
+}
+
+.step-text strong {
+    color: var(--gold2);
+}
+
+/* Send Buttons */
+.send-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.send-btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.send-btn i {
+    font-size: 1.2rem;
+}
+
+.btn-tg {
+    background: linear-gradient(135deg, #229ED9, #1a7fae);
+    color: #fff;
+}
+
+.btn-tg:hover {
+    background: linear-gradient(135deg, #1e8fc4, #156a92);
+    transform: translateY(-2px);
+}
+
+.btn-wa {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #fff;
+}
+
+.btn-wa:hover {
+    background: linear-gradient(135deg, #1ebe5c, #0f7569);
+    transform: translateY(-2px);
+}
+
+.footer-note {
+    margin-top: 25px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 400px) {
+    .cashtag-value { font-size: 1.8rem; }
+    .payment-card { padding: 30px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="payment-card">
+        
+        <!-- Brand -->
+        <div class="brand">
+            <i class="fa-solid fa-crown"></i>
+            HTX <span>Hairstylist</span>
+        </div>
+
+        <h1>Confirm Your Booking</h1>
+        <p class="subtitle">Send your $50 deposit to secure your spot.</p>
+
+        <!-- STABLE CASH APP TAG -->
+        <div class="cashtag-box">
+            <span class="cashtag-label">Send Payment to Cash App</span>
+            <!-- CHANGE THIS TAG IF NEEDED -->
+            <span class="cashtag-value" id="cashtagText">$HTXHairstylist</span>
+            <button class="copy-btn" id="copyBtn" onclick="copyCashtag()">
+                <i class="fa-solid fa-copy"></i> Copy Tag
+            </button>
+        </div>
+
+        <!-- INSTRUCTIONS -->
+        <div class="instructions">
+            <h3>What to do next:</h3>
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-text">Tap <strong>Copy Tag</strong> above and send exactly <strong>$50</strong> on Cash App.</div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-text">Take a <strong>screenshot</strong> of your receipt.</div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-text">Tap Telegram or WhatsApp below and send the screenshot to us.</div>
+            </div>
+        </div>
+
+        <!-- SEND BUTTONS -->
+        <div class="send-buttons">
+            <a href="https://t.me/htxhairstyle" target="_blank" class="send-btn btn-tg">
+                <i class="fa-brands fa-telegram"></i> Send via Telegram
+            </a>
+            <a href="https://wa.me/2347066939100" target="_blank" class="send-btn btn-wa">
+                <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+            </a>
+        </div>
+
+        <div class="footer-note">
+            <i class="fa-solid fa-lock" style="color: var(--gold); margin-right: 5px;"></i>
+            Your appointment is not confirmed until your deposit is received.
+        </div>
+
+    </div>
+</div>
+
+<script>
+function copyCashtag() {
+    const tag = document.getElementById('cashtagText').textContent;
+    const btn = document.getElementById('copyBtn');
+
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(tag).then(() => {
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-copy"></i> Copy Tag';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    } else {
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = tag;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fa-solid fa-copy"></i> Copy Tag';
+            btn.classList.remove('copied');
+        }, 2000);
+    }
+}
+</script>
+</body>
+</html>
